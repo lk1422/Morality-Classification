@@ -52,6 +52,16 @@ def train(model, trainloader, testloader, device, epochs, optim, crit):
         print("=======================================")
 
 if __name__ == "__main__":
+    model = torch.load("Transformer3.pth")
+    torch.save(model.state_dict(), "Transformer_dict.pth")
+    device = torch.device('cpu')
+    dictionary = Dictionary("words.dict")
+    model2 = Transformer(num_tokens=len(dictionary), emb_dim=128, max_seq=100, num_heads=16, num_hidden=4, num_layers=2, dropout=.4, device=device)
+    model2.load_state_dict(torch.load("Transformer_dict.pth"))
+    torch.save(model2, "Transformer5.pth")
+
+
+    """
     dictionary = Dictionary("words.dict")
     trainset = EthicSet("data/train_moral.csv", dictionary, 100)
     testset = EthicSet("data/test_moral.csv", dictionary, 100)
@@ -70,5 +80,6 @@ if __name__ == "__main__":
 
     train(model, trainloader, testloader, device, 100, opt, crit)
     torch.save(model, "Transformer4.pth")
+    """
 
 
