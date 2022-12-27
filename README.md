@@ -6,3 +6,8 @@ How to Run:
 2. Navigate to the directory where the code is located in your terminal.
 3. Run: flask --app app run
 4. Enter localhost:5000 in your webbrowswer.
+
+Requirements:
+  -Flask
+  -Pytorch
+
